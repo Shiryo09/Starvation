@@ -99,7 +99,3 @@
 - subtotal (derivado) — Resultado da multiplicação da quantidade pelo preço unitário.
 
 ---
-
-## 4. Diagrama Entidade e Relacionamento (DER)
-
-O Diagrama Entidade e Relacionamento (DER) será desenvolvido utilizando o draw.io e representa visualmente as entidades, seus atributos, relacionamentos e respectivas cardinalidades.
