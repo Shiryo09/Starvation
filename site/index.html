@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STARVATION — Vestuário Dark RPG & Catálogo de Tormento</title>
+  <meta name="description" content="Vestuário e acessórios exclusivos inspirados no universo Dark RPG de Fear & Hunger e nas obras de Kentaro Miura. Coleções limitadas em drops mensais.">
+  
+  <!-- Favicon rúnico em SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☠</text></svg>">
+
+  <!-- Google Fonts: Cinzel Decorative, Cinzel & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar (Alternazero Style) -->
+  <div class="top-announcement">
+    <div class="announcement-content">
+      <span class="rune-icon">⚜</span>
+      <span><strong>DROP I: AS MASMORRAS DE MA'HABRE</strong> — QUANTIDADES LIMITADAS — ENVIOS PARA TODO O BRASIL</span>
+      <span class="rune-icon">⚜</span>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <header class="main-header" id="header">
+    <div class="header-container">
+      
+      <!-- Navegação Esquerda -->
+      <nav class="header-nav left-nav">
+        <ul class="nav-links">
+          <li><a href="#drops" class="nav-item">DROPS</a></li>
+          <li><a href="#catalogo" class="nav-item" onclick="appState.categoriaAtiva='camisetas'; renderizarBotoesCategorias(); renderizarCatalogo();">CAMISETAS</a></li>
+          <li><a href="#catalogo" class="nav-item" onclick="appState.categoriaAtiva='bones'; renderizarBotoesCategorias(); renderizarCatalogo();">BONÉS</a></li>
+          <li><a href="#catalogo" class="nav-item" onclick="appState.categoriaAtiva='acessorios'; renderizarBotoesCategorias(); renderizarCatalogo();">ACESSÓRIOS</a></li>
+          <li><a href="#lookbook" class="nav-item">LOOKBOOK</a></li>
+        </ul>
+      </nav>
+
+      <!-- Logotipo Central -->
+      <div class="header-brand">
+        <a href="index.html" class="brand-link">
+          <span class="brand-title">STARVATION</span>
+          <span class="brand-subtitle">CATÁLOGO DO VAZIO</span>
+        </a>
+      </div>
+
+      <!-- Ações Direita (Busca, Pedidos, Carrinho) -->
+      <div class="header-actions">
+        
+        <!-- Botão Login / Conta do Usuário -->
+        <button type="button" class="btn-icon-text btn-trigger-auth" id="btn-header-auth" title="Entrar na Conta / Perfil">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="action-text" id="header-auth-label">ENTRAR</span>
+        </button>
+
+        <!-- Botão Meus Pedidos -->
+        <button type="button" class="btn-icon-text btn-trigger-orders" title="Consultar Meus Pedidos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span class="action-text">MEUS PEDIDOS</span>
+        </button>
+
+        <!-- Botão Carrinho / Sacola -->
+        <button type="button" class="btn-cart btn-trigger-cart" title="Abrir Sacola de Pedidos">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="action-text">SACOLA</span>
+          <span class="cart-counter-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Botão Menu Mobile -->
+        <button type="button" class="btn-mobile-toggle" id="btn-mobile-menu" aria-label="Menu Mobile">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION / BANNER DO DROP DO MÊS -->
+    <section class="hero-section" id="drops">
+      <div class="hero-media-wrap">
+        <img src="img/banners/hero-drop01.svg" alt="Banner Drop I: As Masmorras de Ma'habre" class="hero-banner-img" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge">LANÇAMENTO LIMITADO • DROP 01</div>
+        <h1 class="hero-title">AS MASMORRAS DE MA'HABRE</h1>
+        <p class="hero-description">
+          Vestuário pesado e relíquias forjadas para suportar a escuridão. Inspirado na decadência claustrofóbica de <em>Fear & Hunger</em> e na arte visceral de <em>Kentaro Miura</em>.
+        </p>
+
+        <!-- Contador Regressivo do Drop -->
+        <div class="hero-countdown-box">
+          <span class="countdown-label">ENCERRAMENTO DO DROP EM:</span>
+          <div class="countdown-timer">
+            <div class="timer-unit">
+              <span class="unit-val" id="timer-days">28</span>
+              <span class="unit-name">DIAS</span>
+            </div>
+            <span class="timer-sep">:</span>
+            <div class="timer-unit">
+              <span class="unit-val" id="timer-hours">14</span>
+              <span class="unit-name">HORAS</span>
+            </div>
+            <span class="timer-sep">:</span>
+            <div class="timer-unit">
+              <span class="unit-val" id="timer-minutes">42</span>
+              <span class="unit-name">MIN</span>
+            </div>
+            <span class="timer-sep">:</span>
+            <div class="timer-unit">
+              <span class="unit-val" id="timer-seconds">19</span>
+              <span class="unit-name">SEG</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#catalogo" class="btn btn-primary">EXPLORAR DROP ATIVO</a>
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('size-guide-modal').showModal()">GUIA DE MEDIDAS</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRA DE CONTROLE DO CATÁLOGO & FILTROS -->
+    <section class="catalog-section" id="catalogo">
+      <div class="container">
+        
+        <!-- Header da Seção de Catálogo -->
+        <div class="catalog-heading-wrap">
+          <div>
+            <span class="section-sub">ARQUIVO DE VESTUÁRIO</span>
+            <h2 class="section-title">CATÁLOGO DE PEÇAS & RELÍQUIAS</h2>
+          </div>
+          <div class="products-count" id="products-count">Carregando acervo...</div>
+        </div>
+
+        <!-- Barra de Filtros Interativos -->
+        <div class="catalog-controls-bar">
+          
+          <!-- Filtro de Categorias (Pills) -->
+          <div class="category-filter-list" id="category-filter-list">
+            <!-- Gerado dinamicamente via JS -->
+          </div>
+
+          <!-- Filtros Secundários: Drops, Ordenação e Busca -->
+          <div class="controls-right-group">
+            
+            <!-- Campo de Busca em Tempo Real -->
+            <div class="search-input-wrap">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input type="text" id="search-input" placeholder="Buscar peça, cor ou sigilo..." />
+            </div>
+
+            <!-- Filtro de Drop -->
+            <div class="select-wrapper">
+              <select id="drop-filter-select" aria-label="Filtrar por Drop">
+                <option value="todos">Todos os Drops</option>
+                <option value="drop-01">Drop I: Ma'habre (Ativo)</option>
+                <option value="drop-02">Drop II: The Eclipse (Pré-venda)</option>
+              </select>
+            </div>
+
+            <!-- Ordenação -->
+            <div class="select-wrapper">
+              <select id="sort-select" aria-label="Ordenar produtos">
+                <option value="padrao">Ordenar: Destaques</option>
+                <option value="menor-preco">Menor Preço</option>
+                <option value="maior-preco">Maior Preço</option>
+                <option value="nome">Ordem Alfabética</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- GRID DE PRODUTOS (MULTI-IMAGENS) -->
+        <!--
+          ==========================================================================
+          [SEÇÃO DO CATÁLOGO DE PRODUTOS]
+          Os produtos exibidos nesta grade são gerados dinamicamente via JavaScript 
+          a partir do arquivo "products.js" (na constante PRODUTOS).
+          
+          -> Para adicionar ou alterar produtos, edite: site/products.js
+          -> Consulte as instruções completas no arquivo: COMO_ADICIONAR_PRODUTOS.md
+          ==========================================================================
+        -->
+        <div class="product-grid" id="product-grid">
+          <!-- Injetado dinamicamente por app.js a partir de products.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO EDITORIAL / LOOKBOOK (ESTILO ALTERNAZERO & MIURA) -->
+    <section class="lookbook-section" id="lookbook">
+      <div class="container">
+        <div class="lookbook-banner-card">
+          <!-- Slider Editorial / Lookbook (Múltiplas imagens com troca automática e navegação por bolinhas) -->
+          <div class="lookbook-media" id="lookbook-slider">
+            <div class="lookbook-slides" id="lookbook-slides">
+              <!-- Slide 1 -->
+              <div class="lookbook-slide active">
+                <img src="img/banners/banner1.jpg" alt="Lookbook Starvation Editorial 01" />
+              </div>
+              <!-- Slide 2 -->
+              <div class="lookbook-slide">
+                <img src="img/banners/banner2.jpg" alt="Lookbook Starvation Editorial 02" />
+              </div>
+              <!-- Slide 3 -->
+              <div class="lookbook-slide">
+                <img src="img/banners/banner3.jpg" alt="Lookbook Starvation Editorial 03" />
+              </div>
+              <!-- Para adicionar mais imagens, basta duplicar o bloco <div class="lookbook-slide"> acima com a nova imagem -->
+            </div>
+
+            <!-- Navegação por Bolinhas (Substitui as setas, clicáveis e geradas dinamicamente) -->
+            <div class="lookbook-dots" id="lookbook-dots" role="tablist" aria-label="Navegação do Editorial Lookbook"></div>
+          </div>
+          <div class="lookbook-content">
+            <span class="lookbook-tag">EDITORIAL & CONCEITO</span>
+            <h3 class="lookbook-title">BRUTALISMO, HACHURAS & OBSIDIANA</h3>
+            <p class="lookbook-p">
+              Cada peça da <strong>Starvation</strong> é forjada como um artefato de sobrevivência. Utilizamos malhas encorpadas de 260g a 280g penteadas, lavagens minerais estonadas e corrosão de pigmento para recriar a atmosfera angustiante das masmorras e o traço detalhista e sombrio de Kentaro Miura.
+            </p>
+            <div class="lookbook-specs-grid">
+              <div class="spec-item">
+                <span class="spec-number">100%</span>
+                <span class="spec-label">Algodão Premium Encorpado</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-number">4:5</span>
+                <span class="spec-label">Modelagem Oversized Boxy</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-number">DROPS</span>
+                <span class="spec-label">Tiragens Limitadas Mensais</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DROPS FUTUROS E ARQUIVO -->
+    <section class="upcoming-drops-section">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-sub">CALENDÁRIO DE LANÇAMENTOS</span>
+          <h2 class="section-title">DROPS MENSAIS TEMÁTICOS</h2>
+          <p class="section-desc">A cada liberação de miasma, um novo conjunto de artefatos é liberado em tiragens estritamente limitadas.</p>
+        </div>
+
+        <div class="drops-cards-grid">
+          
+          <!-- Drop 01 Card -->
+          <div class="drop-summary-card active">
+            <div class="drop-status-pill active-pill">DROP ATIVO</div>
+            <h4 class="drop-card-title">DROP I: AS MASMORRAS DE MA'HABRE</h4>
+            <p class="drop-card-theme">Inspiração: Fear & Hunger (Dungeon Crawl & Horror Psicológico)</p>
+            <p class="drop-card-desc">Camisetas oversized, amuleto forjado em bronze patinado e beanies com o crânio do Corvo Algoz.</p>
+            <button type="button" class="btn btn-outline" onclick="appState.dropAtivo='drop-01'; document.getElementById('drop-filter-select').value='drop-01'; renderizarCatalogo(); location.href='#catalogo';">
+              VER PRODUTOS DESTE DROP
+            </button>
+          </div>
+
+          <!-- Drop 02 Card -->
+          <div class="drop-summary-card upcoming">
+            <div class="drop-status-pill upcoming-pill">PRÓXIMO DROP • OUTUBRO</div>
+            <h4 class="drop-card-title">DROP II: O ECLIPSE DA MÃO DE DEUS</h4>
+            <p class="drop-card-theme">Inspiração: Kentaro Miura (Berserk & The Brand of Sacrifice)</p>
+            <p class="drop-card-desc">Anéis maciços esculpidos em prata 925 oxidada, dad hats estonados com bordados em sangue seco e camisetas 280g.</p>
+            <button type="button" class="btn btn-outline" onclick="appState.dropAtivo='drop-02'; document.getElementById('drop-filter-select').value='drop-02'; renderizarCatalogo(); location.href='#catalogo';">
+              VER PRÉVIA DO ECLIPSE
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Coluna 1: Marca & Manifesto -->
+        <div class="footer-col brand-col">
+          <span class="footer-brand-title">STARVATION</span>
+          <p class="footer-manifesto">
+            Catálogo e ateliê de vestuário dark streetwear inspirado nas profundezas do horror dos Dark RPGs, com foco em Fear And Hunger!
+          </p>
+          <div class="footer-sigils">
+            <span>☠</span>
+            <span>⚔</span>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Navegação e Categorias -->
+        <div class="footer-col">
+          <h4 class="footer-heading">COLEÇÕES</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogo" onclick="appState.categoriaAtiva='camisetas'; renderizarBotoesCategorias(); renderizarCatalogo();">Camisetas Oversized</a></li>
+            <li><a href="#catalogo" onclick="appState.categoriaAtiva='bones'; renderizarBotoesCategorias(); renderizarCatalogo();">Bonés & Headwear</a></li>
+            <li><a href="#catalogo" onclick="appState.categoriaAtiva='acessorios'; renderizarBotoesCategorias(); renderizarCatalogo();">Acessórios & Anéis</a></li>
+            <li><a href="#drops">Drops Mensais</a></li>
+            <li><a href="#lookbook">Lookbook Editorial</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Atendimento e Suporte -->
+        <div class="footer-col">
+          <h4 class="footer-heading">SUPORTE AO CLIENTE</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" class="btn-trigger-orders">Consultar Meus Pedidos</a></li>
+            <li><a href="javascript:void(0)" onclick="document.getElementById('size-guide-modal').showModal()">Tabela de Medidas</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Envios para todo o território brasileiro via transportadora e Correios com código de rastreamento.')">Prazos e Frete</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Trocas e devoluções aceitas em até 7 dias corridos após o recebimento da peça.')">Políticas de Devolução</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Lavar a frio, não utilizar alvejantes e secar à sombra para preservar a corrosão das estampas.')">Cuidados com a Peça</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Drops Newsletter -->
+        <div class="footer-col">
+          <h4 class="footer-heading">NOTIFICAÇÕES DE DROPS</h4>
+          <p class="footer-text-muted">Receba as coordenadas dos novos drops e relíquias antes do esgotamento.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Seu contato foi gravado no livro sombrio. Você receberá os avisos de novos drops.'); this.reset();">
+            <input type="email" placeholder="Seu melhor e-mail" required />
+            <button type="submit" class="btn btn-primary btn-newsletter">REGISTRAR</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Rodapé Inferior -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; 2026 STARVATION — Todos os direitos reservados. Não affiliation with official games; inspired tribute art.
+        </div>
+        <div class="footer-badges">
+          <span>MALHA PESADA 100% ALGODÃO</span>
+          <span>•</span>
+          <span>ENVIO NACIONAL</span>
+          <span>•</span>
+          <span>PRODUÇÃO ARTESANAL</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL DE DETALHES DO PRODUTO (COM GALERIA MULTI-IMAGEM)
+       ========================================================================= -->
+  <dialog id="product-modal" class="custom-dialog">
+    <div class="dialog-card modal-product-card">
+      <button type="button" class="btn-dialog-close" onclick="fecharModalProduto()" aria-label="Fechar">&times;</button>
+
+      <div class="product-modal-grid">
+        
+        <!-- Galeria de Imagens (Multi-Imagens) -->
+        <div class="modal-gallery-col">
+          <div class="modal-main-img-wrap">
+            <img id="modal-main-image" src="" alt="Produto" />
+          </div>
+          <!-- Barra de miniaturas para alternar ângulos -->
+          <div class="modal-thumbs-strip" id="modal-thumbs-list">
+            <!-- Injetado dinamicamente -->
+          </div>
+        </div>
+
+        <!-- Informações e Seleção -->
+        <div class="modal-details-col">
+          <div class="modal-badge-tag" id="modal-product-tag">TAG</div>
+          <h2 class="modal-title" id="modal-product-title">Nome do Produto</h2>
+          
+          <div class="modal-price-wrap">
+            <span class="modal-price" id="modal-product-price">R$ 0,00</span>
+            <span class="modal-installments">em até 3x sem juros no cartão ou via PIX</span>
+          </div>
+
+          <div class="modal-color-info" id="modal-product-color">Cor: -</div>
+
+          <p class="modal-description" id="modal-product-desc"></p>
+
+          <!-- Especificações do tecido / modelo -->
+          <div class="modal-specs-wrap">
+            <h4 class="specs-title">ESPECIFICAÇÕES DO ARTEFATO:</h4>
+            <ul class="specs-list" id="modal-product-specs"></ul>
+          </div>
+
+          <!-- Seletor de Tamanho -->
+          <div class="modal-size-section">
+            <div class="size-header-row">
+              <span class="size-label">ESCOLHA O TAMANHO:</span>
+              <button type="button" class="btn-link-sizes" onclick="document.getElementById('size-guide-modal').showModal()">
+                Tabela de Medidas ↗
+              </button>
+            </div>
+            <div class="modal-sizes-grid" id="modal-sizes-container">
+              <!-- Injetado dinamicamente -->
+            </div>
+          </div>
+
+          <!-- Quantidade e Botão Adicionar -->
+          <div class="modal-buy-section">
+            <div class="modal-qty-control">
+              <button type="button" class="qty-btn" onclick="alterarQuantidadeModal(-1)">-</button>
+              <span class="qty-display" id="modal-qty-value">1</span>
+              <button type="button" class="qty-btn" onclick="alterarQuantidadeModal(1)">+</button>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-modal-add" onclick="adicionarAoCarrinhoDoModal()">
+              ADICIONAR À SACOLA DE PEDIDO
+            </button>
+          </div>
+
+          <div class="modal-stock-alert" id="modal-product-stock"></div>
+        </div>
+
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       DRAWER LATERAL DA SACOLA / CARRINHO DE COMPRAS
+       ========================================================================= -->
+  <aside id="cart-drawer" class="cart-slide-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-row">
+        <h3 class="drawer-title">SACOLA DE PEDIDOS</h3>
+        <span class="drawer-subtitle">Starvation Torment Apparel</span>
+      </div>
+      <button type="button" class="btn-drawer-close" id="btn-close-cart" aria-label="Fechar Sacola">&times;</button>
+    </div>
+
+    <!-- Lista de Itens do Carrinho -->
+    <div class="drawer-body" id="cart-items-container">
+      <!-- Injetado dinamicamente -->
+    </div>
+
+    <!-- Rodapé da Sacola com Subtotal e Avançar -->
+    <div class="drawer-footer">
+      <div class="drawer-subtotal-row">
+        <span class="subtotal-label">Subtotal do Pedido:</span>
+        <span class="subtotal-amount" id="cart-subtotal-val">R$ 0,00</span>
+      </div>
+      <p class="drawer-shipping-note">Frete e prazos calculados na finalização do pedido.</p>
+      
+      <button type="button" class="btn btn-primary btn-drawer-checkout" id="btn-cart-checkout">
+        FINALIZAR PEDIDO (CHECKOUT)
+      </button>
+
+      <button type="button" class="btn btn-outline btn-continue-shopping" onclick="fecharDrawerCarrinho()">
+        CONTINUAR EXPLORANDO
+      </button>
+    </div>
+  </aside>
+
+  <!-- Backdrop do Drawer -->
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+
+  <!-- =========================================================================
+       MODAL DE AUTENTICAÇÃO / LOGIN & CADASTRO DO CLIENTE (MER COMPLIANT)
+       ========================================================================= -->
+  <dialog id="auth-modal" class="custom-dialog">
+    <div class="dialog-card modal-auth-card">
+      <button type="button" class="btn-dialog-close" onclick="fecharModalAuth()" aria-label="Fechar">&times;</button>
+
+      <!-- Abas de Navegação do Modal (Login / Registro / Perfil) -->
+      <div class="auth-tabs" id="auth-tabs-nav">
+        <button type="button" class="auth-tab active" id="tab-btn-login" onclick="alternarAbaAuth('login')">
+          ENTRAR
+        </button>
+        <button type="button" class="auth-tab" id="tab-btn-register" onclick="alternarAbaAuth('register')">
+          CRIAR CONTA
+        </button>
+        <button type="button" class="auth-tab" id="tab-btn-profile" style="display: none;" onclick="alternarAbaAuth('profile')">
+          MEU PERFIL
+        </button>
+      </div>
+
+      <!-- PAINEL 1: LOGIN -->
+      <div class="auth-tab-panel active" id="panel-auth-login">
+        <div class="auth-panel-header">
+          <span class="auth-tag">PORTAL DO TEMPLO</span>
+          <h3 class="auth-title">ACESSE SUA CONTA</h3>
+          <p class="auth-desc">Identifique-se para gerenciar seus pedidos e salvar seus dados de envio no universo Starvation.</p>
+        </div>
+
+        <form id="form-login" class="auth-form">
+          <div class="form-group">
+            <label for="login-email">E-mail *</label>
+            <input type="email" id="login-email" required placeholder="seu@email.com" autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="login-senha">Senha *</label>
+            <input type="password" id="login-senha" required placeholder="••••••••" autocomplete="current-password" />
+          </div>
+
+          <div id="login-feedback" class="auth-feedback-msg" style="display: none;"></div>
+
+          <button type="submit" class="btn btn-primary btn-auth-submit">
+            ENTRAR NA CONTA
+          </button>
+
+          <div class="auth-demo-box">
+            <span>Deseja testar rapidamente com uma conta de exemplo?</span>
+            <button type="button" class="btn-link-demo" onclick="preencherLoginDemo()">
+              Preencher com Conta Demo (Guts) ⚔
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- PAINEL 2: REGISTRO (CRIAR CONTA) -->
+      <div class="auth-tab-panel" id="panel-auth-register">
+        <div class="auth-panel-header">
+          <span class="auth-tag">NOVO SACRIFÍCIO</span>
+          <h3 class="auth-title">CRIAR CONTA DE CLIENTE</h3>
+          <p class="auth-desc">Cadastre-se no acervo Starvation para registrar pedidos exclusivos e acompanhar seu histórico.</p>
+        </div>
+
+        <form id="form-register" class="auth-form">
+          <div class="form-group">
+            <label for="reg-nome">Nome Completo *</label>
+            <input type="text" id="reg-nome" required placeholder="Ex: Guts de Midland ou Ragnvaldr" />
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="reg-email">E-mail *</label>
+              <input type="email" id="reg-email" required placeholder="seu@email.com" autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-telefone">Telefone / WhatsApp *</label>
+              <input type="tel" id="reg-telefone" required placeholder="(11) 99999-9999" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-endereco">Endereço de Entrega Padrão *</label>
+            <input type="text" id="reg-endereco" required placeholder="Rua, Número, Bairro, Cidade, Estado, CEP" />
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="reg-senha">Senha *</label>
+              <input type="password" id="reg-senha" required placeholder="Mínimo 3 caracteres" autocomplete="new-password" />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-senha-confirm">Confirmar Senha *</label>
+              <input type="password" id="reg-senha-confirm" required placeholder="Repita a senha" autocomplete="new-password" />
+            </div>
+          </div>
+
+          <div id="register-feedback" class="auth-feedback-msg" style="display: none;"></div>
+
+          <button type="submit" class="btn btn-primary btn-auth-submit">
+            GRAVAR ALMA & CADASTRAR
+          </button>
+        </form>
+      </div>
+
+      <!-- PAINEL 3: PERFIL DO USUÁRIO LOGADO -->
+      <div class="auth-tab-panel" id="panel-auth-profile">
+        <div class="auth-panel-header">
+          <span class="auth-tag">CLIENTE AUTENTICADO</span>
+          <h3 class="auth-title" id="profile-user-name">Perfil do Cliente</h3>
+          <p class="auth-desc">Informações cadastradas no acervo Starvation.</p>
+        </div>
+
+        <div class="profile-info-grid">
+          <div class="profile-info-item">
+            <span class="profile-label">ID DO CLIENTE:</span>
+            <strong id="profile-user-id">-</strong>
+          </div>
+          <div class="profile-info-item">
+            <span class="profile-label">E-MAIL:</span>
+            <strong id="profile-user-email">-</strong>
+          </div>
+          <div class="profile-info-item">
+            <span class="profile-label">TELEFONE:</span>
+            <strong id="profile-user-phone">-</strong>
+          </div>
+          <div class="profile-info-item">
+            <span class="profile-label">ENDEREÇO PADRÃO:</span>
+            <strong id="profile-user-address">-</strong>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <button type="button" class="btn btn-outline" onclick="fecharModalAuth(); abrirModalMeusPedidos();">
+            VER MEUS PEDIDOS
+          </button>
+          <button type="button" class="btn btn-secondary btn-logout" onclick="executarLogout()">
+            DESCONECTAR (SAIR)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       MODAL DE FINALIZAÇÃO DO PEDIDO (CHECKOUT / REGRAS DE NEGÓCIO DO MER)
+       ========================================================================= -->
+  <dialog id="checkout-modal" class="custom-dialog">
+    <div class="dialog-card modal-checkout-card">
+      <button type="button" class="btn-dialog-close" onclick="fecharCheckoutModal()" aria-label="Fechar">&times;</button>
+
+      <div class="checkout-modal-header">
+        <span class="checkout-tag">CONFIRMAÇÃO & CADASTRO</span>
+        <h2 class="checkout-title">REGISTRO DO PEDIDO</h2>
+        <p class="checkout-desc">Informe seus dados para identificação do cliente e emissão do pedido no acervo Starvation.</p>
+        <div id="checkout-auth-banner" class="checkout-auth-banner" style="display: none;"></div>
+      </div>
+
+      <form id="checkout-form" class="checkout-form-grid">
+        
+        <!-- Dados do Cliente (Entidade Cliente do MER) -->
+        <div class="form-section-client">
+          <h4 class="form-section-title">1. DADOS DO CLIENTE</h4>
+          
+          <div class="form-group">
+            <label for="checkout-nome">Nome Completo *</label>
+            <input type="text" id="checkout-nome" required placeholder="Ex: Guts Silva ou Ragnvaldr" />
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="checkout-email">E-mail *</label>
+              <input type="email" id="checkout-email" required placeholder="seu@email.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="checkout-telefone">Telefone / WhatsApp *</label>
+              <input type="tel" id="checkout-telefone" required placeholder="(11) 99999-9999" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="checkout-endereco">Endereço de Entrega Completo *</label>
+            <input type="text" id="checkout-endereco" required placeholder="Rua, Número, Bairro, Cidade, CEP" />
+          </div>
+
+          <div class="form-group">
+            <label for="checkout-obs">Observações do Pedido (Opcional)</label>
+            <textarea id="checkout-obs" rows="2" placeholder="Instruções especiais de entrega ou tamanho..."></textarea>
+          </div>
+        </div>
+
+        <!-- Resumo dos Itens (Entidade ItemPedido do MER com Preço de Compra) -->
+        <div class="form-section-items">
+          <h4 class="form-section-title">2. ITENS DO PEDIDO</h4>
+          <p class="items-disclaimer">
+            Conforme as regras do catálogo, o preço unitário de cada produto fica registrado no instante exato da compra.
+          </p>
+
+          <div class="checkout-items-summary" id="checkout-items-summary">
+            <!-- Injetado por app.js -->
+          </div>
+
+          <div class="checkout-total-box">
+            <span class="total-label">VALOR TOTAL:</span>
+            <span class="total-value" id="checkout-total-val">R$ 0,00</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit-order">
+            CONFIRMAR E REGISTRAR PEDIDO
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       MODAL DE CONFIRMAÇÃO DE SUCESSO DO PEDIDO
+       ========================================================================= -->
+  <dialog id="success-order-modal" class="custom-dialog">
+    <div class="dialog-card modal-success-card">
+      <div class="success-icon">
+        <img src="../site/img/banners/nas_ra.png" alt="Pedido Confirmado" class="success-img" style="display: none;" onload="this.style.display='block'; const s = this.nextElementSibling; if(s) s.style.display='none';">
+        <span class="success-fallback-skull">☠</span>
+      </div>
+      <span class="success-tag">PEDIDO GRAVADO NO LIVRO DE ALMAS</span>
+      <h2 class="success-title">PEDIDO CONFIRMADO COM SUCESSO</h2>
+      
+      <div class="success-info-box">
+        <div class="info-row">
+          <span>Código do Pedido:</span>
+          <strong id="success-order-id">#STV-2026-0000</strong>
+        </div>
+        <div class="info-row">
+          <span>Cliente:</span>
+          <strong id="success-client-name">-</strong>
+        </div>
+        <div class="info-row">
+          <span>Data do Registro:</span>
+          <strong id="success-order-date">-</strong>
+        </div>
+        <div class="info-row highlight">
+          <span>Total do Pedido:</span>
+          <strong id="success-order-total">R$ 0,00</strong>
+        </div>
+      </div>
+
+      <div class="success-items-wrap">
+        <h4>Itens Registrados:</h4>
+        <ul id="success-order-items-list"></ul>
+      </div>
+
+      <p class="success-instructions">
+        Seu pedido foi salvo no histórico do site e seu status atual é <strong>Em Separação no Templo</strong>. Você pode consultar seus pedidos a qualquer momento no topo da página.
+      </p>
+
+      <div class="success-actions">
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('success-order-modal').close(); document.body.classList.remove('modal-open');">
+          CONTINUAR NAVEGANDO
+        </button>
+        <button type="button" class="btn btn-outline" onclick="document.getElementById('success-order-modal').close(); abrirModalMeusPedidos();">
+          VER MEUS PEDIDOS
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       MODAL DE HISTÓRICO "MEUS PEDIDOS" (REGRAS DE NEGÓCIO)
+       ========================================================================= -->
+  <dialog id="orders-history-modal" class="custom-dialog">
+    <div class="dialog-card modal-orders-history-card">
+      <button type="button" class="btn-dialog-close" onclick="fecharModalMeusPedidos()" aria-label="Fechar">&times;</button>
+
+      <div class="orders-modal-header">
+        <span class="orders-tag">CONSULTA DE COMPRAS</span>
+        <h2 class="orders-title">HISTÓRICO DE PEDIDOS DO CLIENTE</h2>
+        <p class="orders-desc">
+          Lista de todos os pedidos realizados, seus status e os itens registrados com o preço original no momento da compra.
+        </p>
+        <div id="orders-user-badge" class="orders-user-badge"></div>
+      </div>
+
+      <div class="orders-history-container" id="orders-history-container">
+        <!-- Injetado por app.js -->
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       MODAL GUIA DE MEDIDAS (SIZE GUIDE)
+       ========================================================================= -->
+  <dialog id="size-guide-modal" class="custom-dialog">
+    <div class="dialog-card modal-size-guide-card">
+      <button type="button" class="btn-dialog-close" onclick="document.getElementById('size-guide-modal').close()" aria-label="Fechar">&times;</button>
+      
+      <span class="guide-tag">MODELAGEM STREETWEAR OVERSIZED</span>
+      <h2 class="guide-title">TABELA DE MEDIDAS STARVATION</h2>
+      <p class="guide-desc">Nossas peças contam com caimento boxy/oversized e corte encorpado. Medidas em centímetros (tolerância de até ±1,5cm).</p>
+
+      <div class="table-responsive">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>TAMANHO</th>
+              <th>LARGURA (TÓRAX)</th>
+              <th>COMPRIMENTO</th>
+              <th>MANGA</th>
+              <th>RECOMENDAÇÃO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>P</strong></td>
+              <td>56 cm</td>
+              <td>73 cm</td>
+              <td>23 cm</td>
+              <td>1,65m a 1,73m (até 70kg)</td>
+            </tr>
+            <tr>
+              <td><strong>M</strong></td>
+              <td>59 cm</td>
+              <td>76 cm</td>
+              <td>24 cm</td>
+              <td>1,74m a 1,80m (70 a 82kg)</td>
+            </tr>
+            <tr>
+              <td><strong>G</strong></td>
+              <td>62 cm</td>
+              <td>79 cm</td>
+              <td>25 cm</td>
+              <td>1,81m a 1,88m (82 a 95kg)</td>
+            </tr>
+            <tr>
+              <td><strong>GG</strong></td>
+              <td>65 cm</td>
+              <td>82 cm</td>
+              <td>26 cm</td>
+              <td>1,88m+ (95 a 110kg)</td>
+            </tr>
+            <tr>
+              <td><strong>XG</strong></td>
+              <td>68 cm</td>
+              <td>84 cm</td>
+              <td>27 cm</td>
+              <td>Caimento super oversized</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="guide-notes">
+        <p><strong>Bonés e Beanies:</strong> Tamanho único ajustável por correia/strapback ou malha elástica canelada.</p>
+        <p><strong>Anéis:</strong> Padrão brasileiro de joalheria (aros 18 a 26).</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Mobile navigation drawer toggle helper -->
+  <script>
+    document.getElementById('btn-mobile-menu')?.addEventListener('click', () => {
+      const nav = document.querySelector('.left-nav');
+      if (nav) {
+        nav.classList.toggle('mobile-open');
+      }
+    });
+  </script>
+</body>
+</html>

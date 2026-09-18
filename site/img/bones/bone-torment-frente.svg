@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0e12" />
+      <stop offset="50%" stop-color="#141419" />
+      <stop offset="100%" stop-color="#08080a" />
+    </linearGradient>
+    <linearGradient id="clothGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#24242a" />
+      <stop offset="50%" stop-color="#19191e" />
+      <stop offset="100%" stop-color="#111115" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="transparent" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.8" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.04" />
+    </pattern>
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.05 0" />
+      <feBlend in="SourceGraphic" in2="noise" mode="overlay" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#bgGrad)" />
+  <rect width="800" height="1000" fill="url(#grid)" />
+
+  <!-- Frame border with dark fantasy corners -->
+  <rect x="20" y="20" width="760" height="960" fill="none" stroke="#2a2a32" stroke-width="1.5" />
+  <rect x="25" y="25" width="750" height="950" fill="none" stroke="#1f1f26" stroke-width="0.8" />
+
+  <!-- Corner runes / accents -->
+  <path d="M 20 50 L 50 20 M 20 20 L 60 20 M 20 20 L 20 60" stroke="#8b1e1e" stroke-width="2" fill="none" />
+  <path d="M 780 50 L 750 20 M 780 20 L 740 20 M 780 20 L 780 60" stroke="#8b1e1e" stroke-width="2" fill="none" />
+  <path d="M 20 950 L 50 980 M 20 980 L 60 980 M 20 980 L 20 940" stroke="#8b1e1e" stroke-width="2" fill="none" />
+  <path d="M 780 950 L 750 980 M 780 980 L 740 980 M 780 980 L 780 940" stroke="#8b1e1e" stroke-width="2" fill="none" />
+
+  <!-- Center Artwork / Silhouette based on type -->
+  
+    <!-- Cap / Beanie Silhouette -->
+    <g transform="translate(180, 240)">
+      <!-- Cap crown -->
+      <path d="M 70 300 Q 220 70 370 300 Z" fill="url(#clothGrad)" stroke="#3a3a46" stroke-width="2.5" />
+      <!-- Cap visor / brim -->
+      <path d="M 50 300 Q 220 370 410 270 Q 230 330 50 300 Z" fill="#141418" stroke="#33333d" stroke-width="2" />
+      <!-- Eyelet and button -->
+      <circle cx="220" cy="115" r="9" fill="#121216" stroke="#484856" stroke-width="2" />
+      <!-- Emblem -->
+      <circle cx="220" cy="220" r="40" fill="#0c0c0e" stroke="#8b1e1e" stroke-width="2" />
+      <path d="M 220 190 L 220 250 M 190 220 L 250 220" stroke="#c5a059" stroke-width="2" />
+      <text x="220" y="280" font-family="'Cinzel', serif" font-size="12" fill="#e8e6df" text-anchor="middle" letter-spacing="3">DARK EMBLEM</text>
+    </g>
+  
+
+  <!-- Overlay Vignette -->
+  <rect width="800" height="1000" fill="url(#vignette)" pointer-events="none" />
+
+  <!-- Badge / Angle Indicator (e.g. FRENTE / COSTAS / DETALHE) -->
+  <g transform="translate(400, 90)">
+    <rect x="-110" y="-18" width="220" height="36" fill="#08080a" fill-opacity="0.9" stroke="#8b1e1e" stroke-width="1.2" />
+    <text x="0" y="5" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#e8e6df" text-anchor="middle" letter-spacing="3">FRENTE</text>
+  </g>
+
+  <!-- Product Label & Placeholder Note at Bottom -->
+  <g transform="translate(400, 890)">
+    <text x="0" y="0" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#f0eee8" text-anchor="middle" letter-spacing="3">Dad Hat Torment</text>
+    <text x="0" y="24" font-family="'Inter', sans-serif" font-size="12" fill="#9d9b94" text-anchor="middle" letter-spacing="1.5">Drop 02 • Algodão Estonado</text>
+    <rect x="-140" y="42" width="280" height="22" fill="#16161c" stroke="#2d2d38" stroke-width="1" />
+    <text x="0" y="57" font-family="monospace" font-size="11" fill="#c5a059" text-anchor="middle">SUBSTITUA EM: site/frente.jpg</text>
+  </g>
+</svg>

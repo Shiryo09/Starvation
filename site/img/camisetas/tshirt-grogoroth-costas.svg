@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0e12" />
+      <stop offset="50%" stop-color="#141419" />
+      <stop offset="100%" stop-color="#08080a" />
+    </linearGradient>
+    <linearGradient id="clothGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#24242a" />
+      <stop offset="50%" stop-color="#19191e" />
+      <stop offset="100%" stop-color="#111115" />
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="transparent" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.8" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.04" />
+    </pattern>
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.05 0" />
+      <feBlend in="SourceGraphic" in2="noise" mode="overlay" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#bgGrad)" />
+  <rect width="800" height="1000" fill="url(#grid)" />
+
+  <!-- Frame border with dark fantasy corners -->
+  <rect x="20" y="20" width="760" height="960" fill="none" stroke="#2a2a32" stroke-width="1.5" />
+  <rect x="25" y="25" width="750" height="950" fill="none" stroke="#1f1f26" stroke-width="0.8" />
+
+  <!-- Corner runes / accents -->
+  <path d="M 20 50 L 50 20 M 20 20 L 60 20 M 20 20 L 20 60" stroke="#a31515" stroke-width="2" fill="none" />
+  <path d="M 780 50 L 750 20 M 780 20 L 740 20 M 780 20 L 780 60" stroke="#a31515" stroke-width="2" fill="none" />
+  <path d="M 20 950 L 50 980 M 20 980 L 60 980 M 20 980 L 20 940" stroke="#a31515" stroke-width="2" fill="none" />
+  <path d="M 780 950 L 750 980 M 780 980 L 740 980 M 780 980 L 780 940" stroke="#a31515" stroke-width="2" fill="none" />
+
+  <!-- Center Artwork / Silhouette based on type -->
+  
+    <!-- Oversized T-shirt Silhouette -->
+    <g transform="translate(160, 180)">
+      <!-- Torso & Sleeves -->
+      <path d="M 160 30 Q 240 70 320 30 L 450 120 L 390 220 L 350 190 L 350 560 L 130 560 L 130 190 L 90 220 L 30 120 Z" 
+            fill="url(#clothGrad)" stroke="#3a3a46" stroke-width="2" />
+      <!-- Collar -->
+      <path d="M 180 40 Q 240 85 300 40" fill="none" stroke="#484856" stroke-width="4" />
+      <path d="M 185 45 Q 240 90 295 45" fill="none" stroke="#25252e" stroke-width="2" />
+
+      <!-- Graphic on T-shirt (Berserk / Fear & Hunger Sigil) -->
+      
+        <!-- Minimal Front Chest Print / Pocket Sigil -->
+        <circle cx="240" cy="220" r="45" fill="none" stroke="#a31515" stroke-width="2" />
+        <path d="M 240 185 L 240 255 M 205 220 L 275 220" stroke="#c5a059" stroke-width="2" />
+        <!-- Brand of Sacrifice / Occult glyph lines -->
+        <path d="M 225 205 L 255 235 M 225 235 L 255 205" stroke="#a31515" stroke-width="1.5" />
+        <text x="240" y="290" font-family="'Cinzel', serif" font-size="14" fill="#e8e6df" text-anchor="middle" letter-spacing="3">S T A R V A T I O N</text>
+      
+    </g>
+  
+
+  <!-- Overlay Vignette -->
+  <rect width="800" height="1000" fill="url(#vignette)" pointer-events="none" />
+
+  <!-- Badge / Angle Indicator (e.g. FRENTE / COSTAS / DETALHE) -->
+  <g transform="translate(400, 90)">
+    <rect x="-110" y="-18" width="220" height="36" fill="#08080a" fill-opacity="0.9" stroke="#a31515" stroke-width="1.2" />
+    <text x="0" y="5" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#e8e6df" text-anchor="middle" letter-spacing="3">COSTAS</text>
+  </g>
+
+  <!-- Product Label & Placeholder Note at Bottom -->
+  <g transform="translate(400, 890)">
+    <text x="0" y="0" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#f0eee8" text-anchor="middle" letter-spacing="3">Camiseta Gro-goroth</text>
+    <text x="0" y="24" font-family="'Inter', sans-serif" font-size="12" fill="#9d9b94" text-anchor="middle" letter-spacing="1.5">Drop 01 • Silk Corrosivo</text>
+    <rect x="-140" y="42" width="280" height="22" fill="#16161c" stroke="#2d2d38" stroke-width="1" />
+    <text x="0" y="57" font-family="monospace" font-size="11" fill="#c5a059" text-anchor="middle">SUBSTITUA EM: site/costas.jpg</text>
+  </g>
+</svg>
